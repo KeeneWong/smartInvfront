@@ -1,0 +1,8 @@
+.catergorysmain{
+    width: 47vw;
+    /* height: 60vh; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    /* background-color: aliceblue; */
+}

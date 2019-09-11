@@ -1,0 +1,8 @@
+.itemcontainermain{
+    width: 50vw;
+    /* height: 60vh; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 30px;
+    /* background-color: aliceblue; */
+}

@@ -1,0 +1,41 @@
+.App-header {
+    background-color: #282c34;
+    min-height: 8vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    width: 100vw;
+  
+  }/* header----------------- */
+
+.App-header p{
+    display: inline-block;
+    font-size: 40px;
+    margin: 0;
+  }
+  
+  .headergrid1{
+    grid-column: 1 / span 1;
+  }
+  
+.headergrid5{
+    grid-column: 5 / span 1;
+}
+
+.headergrid5 p{
+    font-size: 25px;
+}
+
+.headergrid6{
+    grid-column: 6 / span 1;
+}
+
+.headergrid6 p{
+    font-size: 25px;
+}
