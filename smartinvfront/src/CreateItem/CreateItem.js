@@ -42,9 +42,15 @@ class CreateItem extends Component {
                 prize: this.state.prize,
                 alive: this.state.alive,
                 user: this.state.user
+            }, {
+                auth: {
+                    username: 'admin',
+                    password: 'Linklamw0ng'
+                }
             })
             .then(response => {
                 console.log(response)
+                this.props.history.push("/");
             })
             .catch(err => {
                 alert(`Invaild information`);

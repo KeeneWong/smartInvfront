@@ -7,7 +7,7 @@ class ItemContainer extends Component {
     render() {
         return (
             <div className="itemcontainermain">
-                <Catergorys></Catergorys>
+                <Catergorys token={this.props.token}></Catergorys>
 
             </div>
         );

@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import SearchDiv from '../SearchDiv/SearchDiv';
 import ItemContainer from '../ItemContainer/ItemContainer';
-import Barchart from '../Barchart/Barchart';
 import Welcome from '../Welcome/Welcome';
 
 class Home extends Component {
     render() {
+        if (this.props.logined === false) {
+            this.props.history.push("/login");
+        }
         return (
             <div className="homeMain flexrow test">
-                <Welcome></Welcome>
-                <ItemContainer></ItemContainer>
+                <Welcome items={this.props.items}></Welcome>
+                <ItemContainer token={this.props.token}></ItemContainer>
 
             </div>
         );

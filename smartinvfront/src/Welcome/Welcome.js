@@ -16,7 +16,7 @@ class Welcome extends Component {
 
 
                     <div className="insideItemCount flexcolumn">
-                        <h2>Item Count : 32</h2>
+                        <h2>Item Count : {this.props.items.length}</h2>
                         <Link to="/new/item" className="headergrid1">
                             <Button variant="outline-success">New Item</Button>
                         </Link>

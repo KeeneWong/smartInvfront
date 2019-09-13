@@ -18,6 +18,11 @@
     display: inline-block;
     font-size: 40px;
     margin: 0;
+    color: rgb(255, 255, 255);
+  }
+
+  .App-header p:hover{
+    color: rgb(159, 204, 255);
   }
   
   .headergrid1{

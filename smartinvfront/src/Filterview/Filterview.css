@@ -1,0 +1,17 @@
+.filterviewMain{
+    width: 80vw;
+    min-height: 90vh;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.filterviewMain h1{
+    margin-top: 20px;
+}
+
+.insideFilterView{
+    width: 80vw;
+display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}

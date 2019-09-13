@@ -1,0 +1,41 @@
+.itemDetailMain{
+    width: 70vw;
+    height: 70vh;
+    display: grid;
+    grid-template-rows: 8fr 3fr;
+    background-color: rgba(0, 0, 0, 0.829);
+    box-shadow: 0px 0px 20px 2px rgba(22, 22, 22, 0.185);
+    border-radius: 10px;
+    padding: 20px;
+    
+
+}
+
+.itemDetailTop{
+    width: 70vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.itemimg{
+    width: 30vw;
+    height: 30vw;
+    background-size: 30vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(138, 138, 138, 0.185);
+    box-shadow: 0px 0px 20px 2px rgba(170, 170, 170, 0.185);
+    border-radius: 15px;
+}
+
+.itemDetailTopRiagt{
+    display: grid;
+    padding: 35px;
+    grid-template-rows: 1fr 3fr 1fr 1fr 1fr; 
+}
+
+.itemDetailTopRiagt p{
+    font-size: 27px;
+    text-align: left;
+    color: white;
+}

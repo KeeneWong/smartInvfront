@@ -15,7 +15,9 @@ class Catergorys extends Component {
 
     componentDidMount() {
         axios
-            .get("https://herokusmartinv.herokuapp.com/catergorys/")
+            .get("https://herokusmartinv.herokuapp.com/catergorys/"
+                , { headers: { Authorization: "Token " + this.props.token } }
+            )
             .then(all => {
                 this.setState({ catergorys: all.data });
                 console.log(all.data);
@@ -23,12 +25,15 @@ class Catergorys extends Component {
             .catch(err => {
                 console.error(err);
             });
+
     }
 
 
+
+
     render() {
+        console.log(this.props)
         let allctaergorydiv = this.state.catergorys.map(each => {
-            console.log(each)
             return <CatergoryDiv key={each.id} catergory={each}></CatergoryDiv>;
         })
 
