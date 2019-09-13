@@ -11,6 +11,7 @@ import CreateItem from './CreateItem/CreateItem';
 import Filterview from './Filterview/Filterview';
 import ItemDetail from './ItemDetail/ItemDetail';
 import Login from './Login/Login';
+import Signup from './Signup/Signup';
 
 class App extends Component {
 
@@ -19,7 +20,8 @@ class App extends Component {
     this.state = {
       catergorys: [],
       items: [],
-      username: '',
+      username: 'admin',
+      email: '',
       password: '',
       logined: false,
       token: ''
@@ -30,12 +32,7 @@ class App extends Component {
   componentDidMount() {
     axios
       .get("https://herokusmartinv.herokuapp.com/catergorys/"
-        , {
-          auth: {
-            username: 'admin',
-            password: 'Linklamw0ng'
-          }
-        }
+        , { headers: { Authorization: "Token " + this.state.token } }
       )
       .then(all => {
         this.setState({ catergorys: all.data });
@@ -46,13 +43,8 @@ class App extends Component {
       });
 
     axios
-      .get("https://herokusmartinv.herokuapp.com/items/"
-        , {
-          auth: {
-            username: 'admin',
-            password: 'Linklamw0ng'
-          }
-        }
+      .get("https://herokusmartinv.herokuapp.com/useritems/" + this.state.username
+        , { headers: { Authorization: "Token " + this.state.token } }
       )
       .then(all => {
         this.setState({ items: all.data });
@@ -78,6 +70,8 @@ class App extends Component {
     e.preventDefault();
     axios
       .post("https://herokusmartinv.herokuapp.com/api-token-auth/", {
+        // username: this.state.username,
+        // password: this.state.password
         username: "admin",
         password: "Linklamw0ng"
       })
@@ -86,6 +80,7 @@ class App extends Component {
         this.setState({ token: response.data.token })
         this.setState({ logined: true })
         this.props.history.push("/");
+        this.componentDidMount()
       })
       .catch(err => {
         alert(`Invaild information`);
@@ -93,11 +88,60 @@ class App extends Component {
       });
   }
 
+
+  handleSignup = e => {
+    e.preventDefault();
+    axios
+      .post("https://herokusmartinv.herokuapp.com/users2/",
+        {
+          username: this.state.username,
+          password: this.state.password,
+          email: this.state.email
+        },
+        { headers: { Authorization: "Token 7448b32c22ce68150b9e1de7a5f744e19d27f2d0" } }
+      )
+      .then(response => {
+        console.log(response)
+        alert('A user has been created')
+      })
+      .then(_ => {
+        axios
+          .post("https://herokusmartinv.herokuapp.com/api-token-auth/", {
+            username: this.state.username,
+            password: this.state.password
+          })
+          .then(response => {
+            console.log(response)
+            this.setState({ token: response.data.token })
+            this.setState({ logined: true })
+            this.props.history.push("/");
+            this.componentDidMount()
+          })
+          .catch(err => {
+            alert(`Invaild information`);
+            console.log(err);
+          });
+      })
+      .catch(err => {
+        alert(`Invaild information`);
+        console.log(err);
+      });
+  }
+
+  handleLogout = e => {
+    this.setState({ username: '' })
+    this.setState({ password: '' })
+    this.setState({ logined: false })
+    this.setState({ token: '' })
+    this.props.history.push("/login");
+  }
+
   render() {
+    console.log(this.state)
 
     return (
       <div className="App">
-        <Nav></Nav>
+        <Nav logined={this.state.logined} handleLogout={this.handleLogout}></Nav>
 
         <main className="mainMain flexcolumn">
           <Route
@@ -133,7 +177,7 @@ class App extends Component {
             path="/catergory/:catergoryid"
             exact
             render={routeProps => (
-              <Filterview items={this.state.items} catergorys={this.state.catergorys} {...routeProps} />
+              <Filterview items={this.state.items} logined={this.state.logined} catergorys={this.state.catergorys} {...routeProps} />
             )}
 
           />
@@ -143,7 +187,7 @@ class App extends Component {
             path="/item/:itemid"
             exact
             render={routeProps => (
-              <ItemDetail {...routeProps} />
+              <ItemDetail logined={this.state.logined} token={this.state.token} {...routeProps} />
             )}
 
           />
@@ -153,6 +197,15 @@ class App extends Component {
             exact
             render={routeProps => (
               <Login handleChange={this.handleChange} handleLogin={this.handleLogin} username={this.state.username} password={this.state.password} logined={this.state.logined}{...routeProps} />
+            )}
+
+          />
+
+          <Route
+            path="/signup"
+            exact
+            render={routeProps => (
+              <Signup handleChange={this.handleChange} handleSignup={this.handleSignup} username={this.state.username} password={this.state.password} email={this.state.email} {...routeProps} />
             )}
 
           />

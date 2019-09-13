@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { InputGroup, FormControl } from 'react-bootstrap';
-import { Link } from "react-router-dom";
 
-class Login extends Component {
+class Signup extends Component {
     render() {
-        // console.log(this.props)
         return (
-            <div className="loginMain">
-                <form className="createitemform flexcolumn" onSubmit={this.props.handleLogin}>
+            <div>
+                <form className="createitemform flexcolumn" onSubmit={this.props.handleSignup}>
 
-                    <h1>Login</h1>
+                    <h1>Signn Up</h1>
 
                     <InputGroup className="mb-3 itemvalue">
                         <InputGroup.Prepend>
@@ -20,6 +18,18 @@ class Login extends Component {
                             aria-label="username"
                             aria-describedby="basic-addon1 inputGroup-sizing-default"
                             value={this.props.username} name="username" onChange={this.props.handleChange}
+                        />
+                    </InputGroup>
+
+                    <InputGroup className="mb-3 itemvalue">
+                        <InputGroup.Prepend>
+                            <InputGroup.Text id="basic-addon1 inputGroup-sizing-default">Email</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <FormControl
+                            placeholder="email"
+                            aria-label="email"
+                            aria-describedby="basic-addon1 inputGroup-sizing-default"
+                            value={this.props.email} name="email" onChange={this.props.handleChange}
                         />
                     </InputGroup>
 
@@ -38,22 +48,20 @@ class Login extends Component {
                     <br />
 
 
-                    <input type="submit" value="Login" />
-
-                    <Link to="/signup"><p>signup</p></Link>
+                    <input type="submit" value="Signup" />
 
 
                 </form>
 
                 {this.props.username}
                 <br></br>
-                {this.props.password}
+                {this.props.email}
                 <br></br>
-                {this.props.logined}
+                {this.props.password}
 
             </div>
         );
     }
 }
 
-export default Login;
+export default Signup;

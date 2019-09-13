@@ -14,12 +14,7 @@ class ItemDetail extends Component {
     componentDidMount() {
         axios
             .get("https://herokusmartinv.herokuapp.com/items/" + this.props.match.params.itemid
-                , {
-                    auth: {
-                        username: 'admin',
-                        password: 'Linklamw0ng'
-                    }
-                }
+                , { headers: { Authorization: "Token " + this.props.token } }
             )
             .then(all => {
                 this.setState({ item: all.data });
@@ -33,6 +28,9 @@ class ItemDetail extends Component {
 
 
     render() {
+        if (this.props.logined === false) {
+            this.props.history.push("/login");
+        }
 
         console.log(this.state)
         return (

@@ -20,7 +20,7 @@ class Catergorys extends Component {
             )
             .then(all => {
                 this.setState({ catergorys: all.data });
-                console.log(all.data);
+                // console.log(all.data);
             })
             .catch(err => {
                 console.error(err);
@@ -32,7 +32,7 @@ class Catergorys extends Component {
 
 
     render() {
-        console.log(this.props)
+        // console.log(this.state)
         let allctaergorydiv = this.state.catergorys.map(each => {
             return <CatergoryDiv key={each.id} catergory={each}></CatergoryDiv>;
         })
