@@ -42,15 +42,11 @@ class CreateItem extends Component {
                 prize: this.state.prize,
                 alive: this.state.alive,
                 user: this.state.user
-            }, {
-                auth: {
-                    username: 'admin',
-                    password: 'Linklamw0ng'
-                }
-            })
+            }, { headers: { Authorization: "Token " + this.props.token } })
             .then(response => {
                 console.log(response)
                 this.props.history.push("/");
+                this.props.updateItem();
             })
             .catch(err => {
                 alert(`Invaild information`);
@@ -60,6 +56,7 @@ class CreateItem extends Component {
 
 
     render() {
+
         let options = this.props.catergorys.map(each => {
             return <option key={each.id} value={each.id}>{each.title}</option>
         })
@@ -126,12 +123,14 @@ class CreateItem extends Component {
                     />
                 </InputGroup>
 
-                <label>
-                    Catergory:
-          <select value={this.state.catergory} name="catergory" onChange={this.handleChange}>
+                <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                        <InputGroup.Text id="basic-addon1 inputGroup-sizing-default">Catergory</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <select value={this.state.catergory} name="catergory" onChange={this.handleChange}>
                         {options}
                     </select>
-                </label>
+                </InputGroup>
 
                 <br />
 

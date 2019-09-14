@@ -48,7 +48,22 @@ class App extends Component {
       )
       .then(all => {
         this.setState({ items: all.data });
-        console.log("sucess load all items");
+        // console.log("sucess load all items");
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
+  updateItem = () => {
+    axios
+      .get("https://herokusmartinv.herokuapp.com/useritems/" + this.state.username
+        , { headers: { Authorization: "Token " + this.state.token } }
+      )
+      .then(all => {
+        console.log(all)
+        this.setState({ items: all.data })
+        console.log("sucess load newdata");
       })
       .catch(err => {
         console.error(err);
@@ -76,7 +91,7 @@ class App extends Component {
         password: "Linklamw0ng"
       })
       .then(response => {
-        console.log(response)
+        // console.log(response)
         this.setState({ token: response.data.token })
         this.setState({ logined: true })
         this.props.history.push("/");
@@ -137,7 +152,39 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state)
+
+    // let newdata;
+
+    // this.updateItem(newdata);
+
+    // console.log(newdata)
+
+    // this.setState({ items: newdata });
+
+    // axios
+    //   .get("https://herokusmartinv.herokuapp.com/catergorys/"
+    //     , { headers: { Authorization: "Token " + this.state.token } }
+    //   )
+    //   .then(all => {
+    //     this.setState({ catergorys: all.data });
+    //     console.log("sucess load catergorys");
+    //   })
+    //   .catch(err => {
+    //     console.error(err);
+    //   });
+
+    // axios
+    //   .get("https://herokusmartinv.herokuapp.com/useritems/" + this.state.username
+    //     , { headers: { Authorization: "Token " + this.state.token } }
+    //   )
+    //   .then(all => {
+    //     this.setState({ items: all.data });
+    //     console.log("sucess load all items");
+    //   })
+    //   .catch(err => {
+    //     console.error(err);
+    //   });
+    // console.log(this.state)
 
     return (
       <div className="App">
@@ -167,7 +214,7 @@ class App extends Component {
             path="/new/item"
             exact
             render={routeProps => (
-              <CreateItem catergorys={this.state.catergorys} {...routeProps} />
+              <CreateItem catergorys={this.state.catergorys} token={this.state.token} updateItem={this.updateItem} {...routeProps} />
             )}
 
           />
