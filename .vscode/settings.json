@@ -1,0 +1,7 @@
+{
+    "files.exclude": {
+        "**/App.test.js": true,
+        "**/logo.svg": true,
+        "**/serviceWorker.js": true
+    }
+}
