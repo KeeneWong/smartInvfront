@@ -63,7 +63,7 @@ class App extends Component {
       .then(all => {
         console.log(all)
         this.setState({ items: all.data })
-        console.log("sucess load newdata");
+        console.log("sucess update item state");
       })
       .catch(err => {
         console.error(err);
@@ -107,7 +107,7 @@ class App extends Component {
   handleSignup = e => {
     e.preventDefault();
     axios
-      .post("https://herokusmartinv.herokuapp.com/users2/",
+      .post("https://herokusmartinv.herokuapp.com/createuser/",
         {
           username: this.state.username,
           password: this.state.password,
@@ -153,39 +153,6 @@ class App extends Component {
 
   render() {
 
-    // let newdata;
-
-    // this.updateItem(newdata);
-
-    // console.log(newdata)
-
-    // this.setState({ items: newdata });
-
-    // axios
-    //   .get("https://herokusmartinv.herokuapp.com/catergorys/"
-    //     , { headers: { Authorization: "Token " + this.state.token } }
-    //   )
-    //   .then(all => {
-    //     this.setState({ catergorys: all.data });
-    //     console.log("sucess load catergorys");
-    //   })
-    //   .catch(err => {
-    //     console.error(err);
-    //   });
-
-    // axios
-    //   .get("https://herokusmartinv.herokuapp.com/useritems/" + this.state.username
-    //     , { headers: { Authorization: "Token " + this.state.token } }
-    //   )
-    //   .then(all => {
-    //     this.setState({ items: all.data });
-    //     console.log("sucess load all items");
-    //   })
-    //   .catch(err => {
-    //     console.error(err);
-    //   });
-    // console.log(this.state)
-
     return (
       <div className="App">
         <Nav logined={this.state.logined} handleLogout={this.handleLogout}></Nav>
@@ -195,7 +162,7 @@ class App extends Component {
             path="/"
             exact
             render={routeProps => (
-              <Home items={this.state.items} logined={this.state.logined} token={this.state.token} {...routeProps} />
+              <Home items={this.state.items} logined={this.state.logined} token={this.state.token} username={this.state.username} {...routeProps} />
             )}
           />
 
@@ -204,7 +171,7 @@ class App extends Component {
             path="/stac"
             exact
             render={routeProps => (
-              <Barchart {...routeProps} />
+              <Barchart {...routeProps} items={this.state.items} />
             )}
 
           />
@@ -234,7 +201,7 @@ class App extends Component {
             path="/item/:itemid"
             exact
             render={routeProps => (
-              <ItemDetail logined={this.state.logined} token={this.state.token} {...routeProps} />
+              <ItemDetail logined={this.state.logined} token={this.state.token} updateItem={this.updateItem} {...routeProps} />
             )}
 
           />

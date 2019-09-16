@@ -9,7 +9,7 @@ class Home extends Component {
         }
         return (
             <div className="homeMain flexrow test">
-                <Welcome items={this.props.items}></Welcome>
+                <Welcome items={this.props.items} username={this.props.username}></Welcome>
                 <ItemContainer token={this.props.token}></ItemContainer>
 
             </div>

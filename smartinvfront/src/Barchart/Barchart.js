@@ -16,39 +16,78 @@ class Barchart extends Component {
     }
 
     render() {
+        console.log(this.props.items.filter(each => each.catergory == 1).length)
+        console.log(this.props.items.length)
+        console.log(this.props.items.filter(each => (each.catergory == 1).length / this.props.items.length) * 100)
         const options = {
+            theme: "light",
             animationEnabled: true,
-            theme: "Dark",
+            backgroundColor: "rgba(243, 243, 243, 0.247)",
+            // width: 600,
             title: {
-                text: "Items Chart"
+                text: "Number of item"
             },
-            axisX: {
-                title: "Social Network",
-                reversed: true,
-            },
-            axisY: {
-                title: "Monthly Active Users",
-                labelFormatter: this.addSymbols
+            dataPointWidth: 40,
+            data: [
+                {
+                    // Change type to "doughnut", "line", "splineArea", etc.
+                    type: "column",
+                    dataPoints: [
+                        { label: "Electronic Device", y: this.props.items.filter(each => each.catergory == 1).length },
+                        { label: "Furniture", y: this.props.items.filter(each => each.catergory == 2).length },
+                        { label: "Cleaning", y: this.props.items.filter(each => each.catergory == 3).length },
+                        { label: "Clothes && Accessory", y: this.props.items.filter(each => each.catergory == 4).length },
+                        { label: "Kitchen Product", y: this.props.items.filter(each => each.catergory == 5).length },
+                        { label: "Movies", y: this.props.items.filter(each => each.catergory == 6).length },
+                        { label: "Books", y: this.props.items.filter(each => each.catergory == 7).length },
+                        { label: "Toys, Kids & Baby", y: this.props.items.filter(each => each.catergory == 8).length },
+                        { label: "Sport and Outdoor", y: this.props.items.filter(each => each.catergory == 9).length },
+                        { label: "Pet Supplies", y: this.props.items.filter(each => each.catergory == 10).length }
+                    ]
+                }
+            ]
+        }
+        const options2 = {
+            theme: "light",
+            backgroundColor: "rgba(243, 243, 243, 0.247)",
+            animationEnabled: true,
+            exportFileName: "New Year Resolutions",
+            exportEnabled: true,
+            title: {
+                text: "Percentage of Different Catergory"
             },
             data: [{
-                type: "bar",
+                type: "pie",
+                showInLegend: true,
+                legendText: "{label}",
+                toolTipContent: "{label}: <strong>{y}%</strong>",
+                indexLabel: "{y}%",
+                indexLabelPlacement: "inside",
                 dataPoints: [
-                    { y: 2200000000, label: "Facebook" },
-                    { y: 1800000000, label: "YouTube" },
-                    { y: 800000000, label: "Instagram" },
-                    { y: 563000000, label: "Qzone" },
-                    { y: 376000000, label: "Weibo" },
-                    { y: 336000000, label: "Twitter" },
-                    { y: 330000000, label: "Reddit" }
+                    { y: (this.props.items.filter(each => each.catergory == 1).length / this.props.items.length) * 100, label: "Electrionic Device" },
+                    { y: (this.props.items.filter(each => each.catergory == 2).length / this.props.items.length) * 100, label: "Furniture" },
+                    { y: (this.props.items.filter(each => each.catergory == 3).length / this.props.items.length) * 100, label: "Cleaning" },
+                    { y: (this.props.items.filter(each => each.catergory == 4).length / this.props.items.length) * 100, label: "Clothes && Accessory" },
+                    { y: (this.props.items.filter(each => each.catergory == 5).length / this.props.items.length) * 100, label: "Kitchen Product" },
+                    { y: (this.props.items.filter(each => each.catergory == 6).length / this.props.items.length) * 100, label: "Movies" },
+                    { y: (this.props.items.filter(each => each.catergory == 7).length / this.props.items.length) * 100, label: "Books" },
+                    { y: (this.props.items.filter(each => each.catergory == 8).length / this.props.items.length) * 100, label: "Toys, Kids & Baby" },
+                    { y: (this.props.items.filter(each => each.catergory == 9).length / this.props.items.length) * 100, label: "Sport and Outdoor" },
+                    { y: (this.props.items.filter(each => each.catergory == 10).length / this.props.items.length) * 100, label: "Pet Supplies" }
                 ]
             }]
         }
         return (
-            <div className="barchartMain flexcolumn">
+            <div className="barchartMain">
+                {/* <div className="firstbarchart"> */}
+                <CanvasJSChart options={options2}
+                /* onRef={ref => this.chart = ref} */
+                />
                 <CanvasJSChart options={options}
-                    onRef={ref => this.chart = ref}
+                /* onRef={ref => this.chart = ref} */
                 />
                 {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
+                {/* </div> */}
             </div>
         );
     }

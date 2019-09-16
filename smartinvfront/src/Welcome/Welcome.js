@@ -9,7 +9,7 @@ class Welcome extends Component {
         return (
             <div className="welcomeMain flexcolumn">
                 <div className="welcome">
-                    <h1 id="hi">Keene <span id="welcome">welcome back </span></h1>
+                    <h1 id="hi">{this.props.username} <span id="welcome">welcome back </span></h1>
                 </div>
                 <div className="itemCount flexrow">
                     <div className="invemtoryimg"></div>

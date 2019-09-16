@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { InputGroup, FormControl } from 'react-bootstrap';
+import { InputGroup, FormControl, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import '../Login/Login.css';
 
 class Login extends Component {
     render() {
@@ -36,20 +37,17 @@ class Login extends Component {
                     </InputGroup>
 
                     <br />
+                    <div className="loginsignup flexrow">
+                        <Link to="/signup"><Button variant="outline-dark">Sigup</Button></Link>
+                        <Button type="submit" value="Login" variant="dark">Login</Button>
 
 
-                    <input type="submit" value="Login" />
+                    </div>
 
-                    <Link to="/signup"><p>signup</p></Link>
+
 
 
                 </form>
-
-                {this.props.username}
-                <br></br>
-                {this.props.password}
-                <br></br>
-                {this.props.logined}
 
             </div>
         );

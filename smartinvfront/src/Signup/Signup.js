@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InputGroup, FormControl } from 'react-bootstrap';
+import { InputGroup, FormControl, Button } from 'react-bootstrap';
 
 class Signup extends Component {
     render() {
@@ -47,17 +47,10 @@ class Signup extends Component {
 
                     <br />
 
-
-                    <input type="submit" value="Signup" />
+                    <Button type="submit" value="Signup" variant="dark">Signup</Button>
 
 
                 </form>
-
-                {this.props.username}
-                <br></br>
-                {this.props.email}
-                <br></br>
-                {this.props.password}
 
             </div>
         );

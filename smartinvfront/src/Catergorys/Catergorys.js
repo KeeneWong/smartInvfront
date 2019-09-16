@@ -40,6 +40,7 @@ class Catergorys extends Component {
         return (
             <div className="catergorysmain">
                 {allctaergorydiv}
+
             </div>
         );
     }
