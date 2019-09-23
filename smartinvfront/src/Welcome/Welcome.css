@@ -47,7 +47,7 @@
 
 @media only screen and (max-width: 700px) {
     .welcomeMain {
-     width: 80vw;
+     width: 90vw;
      display: flex;
      height: 45vh;
      /* flex-direction: row; */
@@ -64,7 +64,7 @@
 
     .itemCount{
         height: 15vh;
-        width: 70vw;
+        width: 90vw;
         /* padding-top: 0px; */
     }
   }

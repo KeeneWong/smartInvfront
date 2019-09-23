@@ -8,7 +8,7 @@ class EachItemDiv extends Component {
             <Link to={"/item/" + this.props.item.id}>
                 <div className="eachitemdivMain flexcolumn">
                     <p>{this.props.item.name}</p>
-                    <p>{this.props.item.describtion}</p>
+                    {/* <p>{this.props.item.describtion}</p> */}
                     {/* <p>{this.props.item.name}</p>
                 <p>{this.props.item.name}</p> */}
 

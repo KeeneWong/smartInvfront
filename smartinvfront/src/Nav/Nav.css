@@ -48,3 +48,13 @@
 #logoutbtton{
   font-size: 25px;
 }
+
+
+@media only screen and (max-width: 700px) {
+
+  .App-header p{
+    font-size: 25px;
+  }
+
+
+}
