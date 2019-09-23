@@ -1,0 +1,7 @@
+@media only screen and (max-width: 700px) {
+    .homeMain {
+      /* border: 5px solid red; */
+      display: flex;
+      flex-direction: column;
+    }
+  }
