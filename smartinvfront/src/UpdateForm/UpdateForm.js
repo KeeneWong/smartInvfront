@@ -14,7 +14,7 @@ class UpdateForm extends Component {
             image_url: "",
             prize: 0,
             alive: true,
-            user: 1
+            user: ''
         };
     }
 
@@ -25,13 +25,57 @@ class UpdateForm extends Component {
                 , { headers: { Authorization: "Token " + this.props.token } }
             )
             .then(all => {
-                this.setState({ item: all.data });
+                console.log(all.data)
+                this.setState({ name: all.data.name });
+                this.setState({ describtion: all.data.describtion });
+                this.setState({ catergory: all.data.catergory });
+                this.setState({ quantity: all.data.quantity });
+                this.setState({ image_url: all.data.image_url });
+                this.setState({ prize: all.data.prize });
+                this.setState({ alive: all.data.alive });
+                this.setState({ user: all.data.user });
                 // console.log("sucess load item", all);
             })
             .catch(err => {
                 console.error(err);
             });
 
+    }
+
+    handleChange = (event) => {
+
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+
+    handleSubmit = (event) => {
+        alert('A item has been submitted: ' + this.state.name);
+        event.preventDefault();
+        axios
+            .put("https://herokusmartinv.herokuapp.com/items/" + this.props.match.params.itemid, {
+                name: this.state.name,
+                describtion: this.state.describtion,
+                catergory: this.state.catergory,
+                quantity: this.state.quantity,
+                image_url: this.state.image_url,
+                prize: this.state.prize,
+                alive: this.state.alive,
+                user: this.props.userid
+            }, { headers: { Authorization: "Token " + this.props.token } })
+            .then(response => {
+                console.log(response)
+                this.props.history.push("/");
+                this.props.updateItem();
+            })
+            .catch(err => {
+                alert(`Invaild information`);
+                console.log(err);
+            });
     }
 
 

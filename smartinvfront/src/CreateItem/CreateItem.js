@@ -41,7 +41,7 @@ class CreateItem extends Component {
                 image_url: this.state.image_url,
                 prize: this.state.prize,
                 alive: this.state.alive,
-                user: this.state.user
+                user: this.props.userid
             }, { headers: { Authorization: "Token " + this.props.token } })
             .then(response => {
                 console.log(response)

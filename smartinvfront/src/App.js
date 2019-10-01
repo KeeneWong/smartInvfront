@@ -26,7 +26,7 @@ class App extends Component {
       password: '',
       logined: false,
       token: '',
-      userid: ""
+      userid: ''
     }
   }
 
@@ -103,6 +103,19 @@ class App extends Component {
         alert(`Invaild information`);
         console.log(err);
       });
+
+    axios
+      .get("https://herokusmartinv.herokuapp.com/users/" + this.state.username,
+        { headers: { Authorization: "Token 7448b32c22ce68150b9e1de7a5f744e19d27f2d0" } })
+      .then(response => {
+        console.log(response.data[0].id)
+        this.setState({ userid: response.data[0].id })
+      })
+      .catch(err => {
+        alert(`Invaild information`);
+        console.log(err);
+        console.log(this.state.token)
+      });
   }
 
 
@@ -142,6 +155,19 @@ class App extends Component {
       .catch(err => {
         alert(`Invaild information`);
         console.log(err);
+      });
+
+    axios
+      .get("https://herokusmartinv.herokuapp.com/users/" + this.state.username,
+        { headers: { Authorization: "Token 7448b32c22ce68150b9e1de7a5f744e19d27f2d0" } })
+      .then(response => {
+        console.log(response.data[0].id)
+        this.setState({ userid: response.data[0].id })
+      })
+      .catch(err => {
+        alert(`Invaild information`);
+        console.log(err);
+        console.log(this.state.token)
       });
   }
 
@@ -183,7 +209,7 @@ class App extends Component {
             path="/new/item"
             exact
             render={routeProps => (
-              <CreateItem catergorys={this.state.catergorys} token={this.state.token} updateItem={this.updateItem} {...routeProps} />
+              <CreateItem catergorys={this.state.catergorys} token={this.state.token} updateItem={this.updateItem} userid={this.state.userid} {...routeProps} />
             )}
 
           />
@@ -230,7 +256,7 @@ class App extends Component {
             path="/updateitem/:itemid"
             exact
             render={routeProps => (
-              <UpdateForm handleChange={this.handleChange} catergorys={this.state.catergorys} token={this.state.token} {...routeProps} />
+              <UpdateForm handleChange={this.handleChange} updateItem={this.updateItem} catergorys={this.state.catergorys} token={this.state.token} userid={this.state.userid} {...routeProps} />
             )}
 
           />
