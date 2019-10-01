@@ -49,7 +49,7 @@
     .welcomeMain {
      width: 90vw;
      display: flex;
-     height: 45vh;
+     height: 52vh;
      /* flex-direction: row; */
     }
 
@@ -58,8 +58,21 @@
     }
 
     #hi{
-        font-size: 60px;
+        font-size: 40px;
         padding-top: 10px;
+    }
+
+    #welcome{
+        font-size: 20px;
+    }
+
+    .itemCount h2{
+        font-size: 25px;
+    }
+
+    .invemtoryimg{
+        height: 50px;
+    width: 50px;
     }
 
     .itemCount{

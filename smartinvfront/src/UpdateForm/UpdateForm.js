@@ -54,7 +54,7 @@ class UpdateForm extends Component {
     }
 
     handleSubmit = (event) => {
-        alert('A item has been submitted: ' + this.state.name);
+        alert('A item has been updated: ' + this.state.name);
         event.preventDefault();
         axios
             .put("https://herokusmartinv.herokuapp.com/items/" + this.props.match.params.itemid, {
