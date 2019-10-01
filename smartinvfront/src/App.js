@@ -12,6 +12,7 @@ import Filterview from './Filterview/Filterview';
 import ItemDetail from './ItemDetail/ItemDetail';
 import Login from './Login/Login';
 import Signup from './Signup/Signup';
+import UpdateForm from './UpdateForm/UpdateForm';
 
 class App extends Component {
 
@@ -24,7 +25,8 @@ class App extends Component {
       email: '',
       password: '',
       logined: false,
-      token: ''
+      token: '',
+      userid: ""
     }
   }
 
@@ -220,6 +222,15 @@ class App extends Component {
             exact
             render={routeProps => (
               <Signup handleChange={this.handleChange} handleSignup={this.handleSignup} username={this.state.username} password={this.state.password} email={this.state.email} {...routeProps} />
+            )}
+
+          />
+
+          <Route
+            path="/updateitem/:itemid"
+            exact
+            render={routeProps => (
+              <UpdateForm handleChange={this.handleChange} catergorys={this.state.catergorys} token={this.state.token} {...routeProps} />
             )}
 
           />

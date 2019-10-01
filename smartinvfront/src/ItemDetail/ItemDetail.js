@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import './ItemDetail.css';
 import { Button } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 class ItemDetail extends Component {
 
@@ -63,14 +64,16 @@ class ItemDetail extends Component {
 
                     </div>
 
+
                     <div className="itemDetailTopRiagt">
                         <p>{this.state.item.name}</p>
                         <div><p>Describtion: <br></br>{this.state.item.describtion}</p></div>
                         <p>Quantity: {this.state.item.quantity}</p>
                         <p>Price: {this.state.item.prize}</p>
                         <div className="itemDetailBottom flexrow" >
-
-                            <Button variant="outline-success" onClick={this.handleUpdate}>Update</Button>
+                            <Link to={"/updateitem/" + this.props.match.params.itemid}>
+                                <Button variant="outline-success">Update</Button>
+                            </Link>
                             <Button variant="outline-danger" onClick={this.handleDelete}>Delete</Button>
 
 

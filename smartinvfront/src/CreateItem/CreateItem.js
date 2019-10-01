@@ -145,10 +145,6 @@ class CreateItem extends Component {
                 <input type="submit" value="Submit" />
 
                 <br />
-                {/* <h2>{this.state.name}</h2>
-                <h2>{this.state.describtion}</h2>
-                <h2>{this.state.quantity}</h2>
-                <h2>{this.state.catergory}</h2> */}
             </form>
 
 
