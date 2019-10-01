@@ -6,3 +6,12 @@
 .itemvalue{
     width: 60vw;
 }
+
+@media only screen and (max-width: 400px) {
+
+.createitemform h1{
+    font-size: 30px;
+}
+
+
+}

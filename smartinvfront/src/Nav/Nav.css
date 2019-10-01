@@ -58,3 +58,22 @@
 
 
 }
+
+@media only screen and (max-width: 450px) {
+
+  .App-header {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  }
+
+  .headergrid5{
+    grid-column: 3 / span 1;
+}
+
+.headergrid6{
+    grid-column: 4 / span 1;
+}
+
+
+}
