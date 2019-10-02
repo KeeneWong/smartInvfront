@@ -24,7 +24,7 @@ class Welcome extends Component {
                     </div>
 
                 </div>
-                <SearchDiv></SearchDiv>
+                <SearchDiv items={this.props.items}></SearchDiv>
 
             </div>
         );

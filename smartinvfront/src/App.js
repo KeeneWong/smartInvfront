@@ -50,7 +50,7 @@ class App extends Component {
       )
       .then(all => {
         this.setState({ items: all.data });
-        // console.log("sucess load all items");
+        console.log("sucess load all items");
       })
       .catch(err => {
         console.error(err);
