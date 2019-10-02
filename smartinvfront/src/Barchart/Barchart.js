@@ -64,16 +64,16 @@ class Barchart extends Component {
                 indexLabel: "{y}%",
                 indexLabelPlacement: "inside",
                 dataPoints: [
-                    { y: (this.props.items.filter(each => each.catergory == 1).length / this.props.items.length) * 100, label: "Electrionic Device" },
-                    { y: (this.props.items.filter(each => each.catergory == 2).length / this.props.items.length) * 100, label: "Furniture" },
-                    { y: (this.props.items.filter(each => each.catergory == 3).length / this.props.items.length) * 100, label: "Cleaning" },
-                    { y: (this.props.items.filter(each => each.catergory == 4).length / this.props.items.length) * 100, label: "Clothes && Accessory" },
-                    { y: (this.props.items.filter(each => each.catergory == 5).length / this.props.items.length) * 100, label: "Kitchen Product" },
-                    { y: (this.props.items.filter(each => each.catergory == 6).length / this.props.items.length) * 100, label: "Movies" },
-                    { y: (this.props.items.filter(each => each.catergory == 7).length / this.props.items.length) * 100, label: "Books" },
-                    { y: (this.props.items.filter(each => each.catergory == 8).length / this.props.items.length) * 100, label: "Toys, Kids & Baby" },
-                    { y: (this.props.items.filter(each => each.catergory == 9).length / this.props.items.length) * 100, label: "Sport and Outdoor" },
-                    { y: (this.props.items.filter(each => each.catergory == 10).length / this.props.items.length) * 100, label: "Pet Supplies" }
+                    { y: Math.floor((this.props.items.filter(each => each.catergory == 1).length / this.props.items.length) * 100), label: "Electrionic Device" },
+                    { y: Math.floor((this.props.items.filter(each => each.catergory == 2).length / this.props.items.length) * 100), label: "Furniture" },
+                    { y: Math.floor((this.props.items.filter(each => each.catergory == 3).length / this.props.items.length) * 100), label: "Cleaning" },
+                    { y: Math.floor((this.props.items.filter(each => each.catergory == 4).length / this.props.items.length) * 100), label: "Clothes && Accessory" },
+                    { y: Math.floor((this.props.items.filter(each => each.catergory == 5).length / this.props.items.length) * 100), label: "Kitchen Product" },
+                    { y: Math.floor((this.props.items.filter(each => each.catergory == 6).length / this.props.items.length) * 100), label: "Movies" },
+                    { y: Math.floor((this.props.items.filter(each => each.catergory == 7).length / this.props.items.length) * 100), label: "Books" },
+                    { y: Math.floor((this.props.items.filter(each => each.catergory == 8).length / this.props.items.length) * 100), label: "Toys, Kids & Baby" },
+                    { y: Math.floor((this.props.items.filter(each => each.catergory == 9).length / this.props.items.length) * 100), label: "Sport and Outdoor" },
+                    { y: Math.floor((this.props.items.filter(each => each.catergory == 10).length / this.props.items.length) * 100), label: "Pet Supplies" }
                 ]
             }]
         }
